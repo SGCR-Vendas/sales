@@ -52,7 +52,7 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
             }
         }
 
-       
+
         $('.nav li a', sidebar).each(function () {
             var $this = $(this);
             addActiveClass($this);

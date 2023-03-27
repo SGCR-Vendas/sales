@@ -16,20 +16,20 @@ class CustomAuthController extends Controller
     use FuncoesAdaptadas;
 
     public function index()
-    {      
+    {
         if(Auth::check()){
             return redirect()->intended('dashboard');
         }
         return view('auth.login');
-    }  
-      
+    }
+
     public function customLogin(Request $request)
     {
         $request->validate([
             'email' => 'required',
             'password' => 'required',
         ]);
-   
+
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
 
@@ -65,7 +65,7 @@ class CustomAuthController extends Controller
         Alert::error('Urps!', 'Você não está logado!');
         return redirect('login');
     }
-    
+
     public function signOut() {
         Session::flush();
         Auth::logout();

@@ -67,7 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
         'admin/dashboard',
         [CustomAuthController::class, 'dashboard']
     )->name('dashboard');
-    
+
 
     /* Minha Conta */
     Route::get('admin/configuracao/minhaconta',                   [ConfiguracaoMinhaContaController::class, 'index'])->name('minhaconta');
@@ -139,7 +139,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('admin/venda/store',                              [VendaPdvController::class, 'store'])->name('venda.store');
     Route::post('admin/cadastro/produto/update/{id}',             [VendaPdvController::class, 'update'])->name('venda.update');
 
-    /* 
+    /*
         @function pesquisar_produto_por_empresa
         @int id_empresa
         @retornar produtos que não foram vinculados ainda
