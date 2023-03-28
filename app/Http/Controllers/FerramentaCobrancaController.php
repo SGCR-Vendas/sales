@@ -26,6 +26,11 @@ class FerramentaCobrancaController extends Controller
         $vence_hoje = CadastroVenda::BuscarVencimento($hoje);
         $saudacao = Tratamento::SaudacaoHorario();
 
+
+        // dd($vence_hoje);
+
+
+
         if ($vence_hoje) {
 
             $i = 0;
@@ -34,11 +39,11 @@ class FerramentaCobrancaController extends Controller
                 if (!$vencimento->celular == "") {
 
                     /* Variáveis Gerais */
-                    $cliente_celular = "554198036863";
+                    $cliente_celular = "5565999988355";
 
                     $data = explode(" ", $vencimento->data_venda);
                     //$cliente_celular = Tratamento::FormatarTelefone($vencimento->celular);
-              
+
                     /* Parte A - Cobrança */
                     $cobranca = new FerramentaMensagem();
                     $cobranca->titulo = "Cobrança Automática - Saudação";
@@ -86,13 +91,13 @@ class FerramentaCobrancaController extends Controller
                 $i++;
 
 
-                //if ($i == 0) break;
+                if ($i == 0) break;
             }
         }
 
-        echo "<pre>";
-        print_r($retorno);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($retorno);
+        // echo "</pre>";
 
 
 
