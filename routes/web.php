@@ -62,50 +62,49 @@ Route::get('admin/signout',                                       [CustomAuthCon
 Route::group(['middleware' => 'auth'], function () {
 
     /* Configurações - Dashboard */
+    Route::get('admin/dashboard',                                 [CustomAuthController::class, 'dashboard'])->name('dashboard');
     Route::get('admin/configuracao',                              [ConfiguracaoController::class, 'index']);
-    Route::get(
-        'admin/dashboard',
-        [CustomAuthController::class, 'dashboard']
-    )->name('dashboard');
 
-
-    /* Minha Conta */
-    Route::get('admin/configuracao/minhaconta',                   [ConfiguracaoMinhaContaController::class, 'index'])->name('minhaconta');
-    Route::post('admin/configuracao/minhaconta/store',            [ConfiguracaoMinhaContaController::class, 'store'])->name('minhaconta.store');
-
+    /* Configurações */
     /* Tipos de Usuário */
     Route::get('admin/configuracao/usuario_tipo',                 [ConfiguracaoUsuarioTipoController::class, 'index'])->name('usuario_tipo');
     Route::get('admin/configuracao/usuario_tipo/editar/{id?}',    [ConfiguracaoUsuarioTipoController::class, 'edit'])->name('usuario_tipo.editar');
     Route::get('admin/configuracao/usuario_tipo/adicionar',       [ConfiguracaoUsuarioTipoController::class, 'create'])->name('usuario_tipo.adicionar');
     Route::post('admin/configuracao/usuario_tipo/store',          [ConfiguracaoUsuarioTipoController::class, 'store'])->name('usuario_tipo.store');
     Route::post('admin/configuracao/usuario_tipo/update/{id}',    [ConfiguracaoUsuarioTipoController::class, 'update'])->name('usuario_tipo.update');
-
     /* Usuários */
     Route::get('admin/configuracao/usuario',                      [ConfiguracaoUsuarioController::class, 'index'])->name('usuario');
     Route::get('admin/configuracao/usuario/editar/{id?}',         [ConfiguracaoUsuarioController::class, 'edit'])->name('usuario.editar');
     Route::get('admin/configuracao/usuario/adicionar',            [ConfiguracaoUsuarioController::class, 'create'])->name('usuario.adicionar');
     Route::post('admin/configuracao/usuario/store',               [ConfiguracaoUsuarioController::class, 'store'])->name('usuario.store');
     Route::post('admin/configuracao/usuario/update/{id}',         [ConfiguracaoUsuarioController::class, 'update'])->name('usuario.update');
-
+    /* Configurações - Sistema */
+    Route::get('admin/configuracao/sistema',                      [ConfiguracaoSistemaController::class, 'index'])->name('sistema');
+    Route::post('admin/configuracao/sistema/store',               [ConfiguracaoSistemaController::class, 'store'])->name('sistema.store');
     /* Módulos */
     Route::get('admin/configuracao/modulo',                       [ConfiguracaoModuloController::class, 'index'])->name('modulo');
     Route::get('admin/configuracao/modulo/editar/{id?}',          [ConfiguracaoModuloController::class, 'edit'])->name('modulo.editar');
     Route::get('admin/configuracao/modulo/adicionar',             [ConfiguracaoModuloController::class, 'create'])->name('modulo.adicionar');
     Route::post('admin/configuracao/modulo/store',                [ConfiguracaoModuloController::class, 'store'])->name('modulo.store');
     Route::post('admin/configuracao/modulo/update/{id}',          [ConfiguracaoModuloController::class, 'update'])->name('modulo.update');
+    /* Minha Conta */
+    Route::get('admin/configuracao/minhaconta',                   [ConfiguracaoMinhaContaController::class, 'index'])->name('minhaconta');
+    Route::post('admin/configuracao/minhaconta/store',            [ConfiguracaoMinhaContaController::class, 'store'])->name('minhaconta.store');
 
-    /* Configurações - Sistema */
-    Route::get('admin/configuracao/sistema',                      [ConfiguracaoSistemaController::class, 'index'])->name('sistema');
-    Route::post('admin/configuracao/sistema/store',               [ConfiguracaoSistemaController::class, 'store'])->name('sistema.store');
+    /* Sites */
+    //configurar
+    //conteudos
+
+    /* Ferramentas - Mensagens para WhatsApp */
+    Route::get('admin/ferramenta/mensagem',                       [FerramentaMensagemController::class, 'index'])->name('ferramenta.mensagem');
+    Route::get('admin/ferramenta/mensagem/adicionar',             [FerramentaMensagemController::class, 'create'])->name('ferramenta.mensagem.adicionar');
+    Route::get('admin/ferramenta/mensagem/editar/{id?}',          [FerramentaMensagemController::class, 'edit'])->name('ferramenta.mensagem.editar');
+    Route::post('admin/ferramenta/mensagem/store',                [FerramentaMensagemController::class, 'store'])->name('ferramenta.mensagem.store');
+    Route::post('admin/ferramenta/mensagem/update/{id}',          [FerramentaMensagemController::class, 'update'])->name('ferramenta.mensagemda.update');
+
+    Route::get('admin/ferramenta/cobranca/automatica',            [FerramentaCobrancaController::class, 'cobranca_automatica'])->name('ferramenta.cobranca.automatica');
 
     /* Cadastros */
-    /* Cadastros - Cliente */
-    Route::get('admin/cadastro/cliente',                          [CadastroClienteController::class, 'index'])->name('cadastro.cliente');
-    Route::get('admin/cadastro/cliente/editar/{id?}',             [CadastroClienteController::class, 'edit'])->name('cadastro.cliente.editar');
-    Route::get('admin/cadastro/cliente/adicionar',                [CadastroClienteController::class, 'create'])->name('cadastro.cliente.adicionar');
-    Route::post('admin/cadastro/cliente/store',                   [CadastroClienteController::class, 'store'])->name('cadastro.cliente.store');
-    Route::post('admin/cadastro/cliente/update/{id}',             [CadastroClienteController::class, 'update'])->name('cadastro.cliente.update');
-
     /* Cadastros - Empresa */
     Route::get('admin/empresa',                                   [CadastroEmpresaController::class, 'index'])->name('empresa');
     Route::get('admin/cadastro/empresa',                          [CadastroEmpresaController::class, 'index'])->name('cadastro.empresa');
@@ -113,10 +112,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('admin/cadastro/empresa/adicionar',                [CadastroEmpresaController::class, 'create'])->name('cadastro.empresa.adicionar');
     Route::post('admin/cadastro/empresa/store',                   [CadastroEmpresaController::class, 'store'])->name('cadastro.empresa.store');
     Route::post('admin/cadastro/empresa/update/{id}',             [CadastroEmpresaController::class, 'update'])->name('cadastro.empresa.update');
-
     /* Cadastros - Empresa - Configurações do Site */
     Route::get('admin/cadastro/empresa/site/{id?}',               [CadastroEmpresaController::class, 'site'])->name('cadastro.empresa.site');
-
+    /* Cadastros - Cliente */
+    Route::get('admin/cadastro/cliente',                          [CadastroClienteController::class, 'index'])->name('cadastro.cliente');
+    Route::get('admin/cadastro/cliente/editar/{id?}',             [CadastroClienteController::class, 'edit'])->name('cadastro.cliente.editar');
+    Route::get('admin/cadastro/cliente/adicionar',                [CadastroClienteController::class, 'create'])->name('cadastro.cliente.adicionar');
+    Route::post('admin/cadastro/cliente/store',                   [CadastroClienteController::class, 'store'])->name('cadastro.cliente.store');
+    Route::post('admin/cadastro/cliente/update/{id}',             [CadastroClienteController::class, 'update'])->name('cadastro.cliente.update');
     /* Cadastros - Produto */
     Route::get('admin/produto',                                   [CadastroProdutoController::class, 'index'])->name('produto');
     Route::get('admin/cadastro/produto',                          [CadastroProdutoController::class, 'index'])->name('cadastro.produto');
@@ -124,7 +127,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('admin/cadastro/produto/adicionar',                [CadastroProdutoController::class, 'create'])->name('cadastro.produto.adicionar');
     Route::post('admin/cadastro/produto/store',                   [CadastroProdutoController::class, 'store'])->name('cadastro.produto.store');
     Route::post('admin/cadastro/produto/update/{id}',             [CadastroProdutoController::class, 'update'])->name('cadastro.produto.update');
-
     /* Cadastros - Associar Empresa/Lider ao Produto */
     Route::get('admin/cadastro/produto/associar',                 [CadastroProdutoAssociarController::class, 'index'])->name('cadastro.produto.associar');
     Route::get('admin/cadastro/produto/associar/editar/{id?}',    [CadastroProdutoAssociarController::class, 'edit'])->name('cadastro.produto.associar.editar');
@@ -132,12 +134,24 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('admin/cadastro/produto/associar/store',          [CadastroProdutoAssociarController::class, 'store'])->name('cadastro.produto.associar.store');
     Route::post('admin/cadastro/produto/associar/update/{id}',    [CadastroProdutoAssociarController::class, 'update'])->name('cadastro.produto.update');
 
+    /* Estoque */
+    //Gerenciar
+
+    /* Vendas */
     /* Ponto de Venda */
     Route::get('admin/venda/pdv',                                 [VendaPdvController::class, 'index'])->name('venda.pontodevenda');
     Route::get('admin/venda/adicionar',                           [VendaPdvController::class, 'create'])->name('venda.adicionar');
     Route::get('admin/venda/editar/{id?}',                        [VendaPdvController::class, 'edit'])->name('venda.editar');
     Route::post('admin/venda/store',                              [VendaPdvController::class, 'store'])->name('venda.store');
     Route::post('admin/cadastro/produto/update/{id}',             [VendaPdvController::class, 'update'])->name('venda.update');
+
+    /* Relatório */
+    // Logs de Acesso
+    // Empresas
+    // Produtos
+    // Clientes
+    // Estoque
+    // Vendas
 
     /*
         @function pesquisar_produto_por_empresa
@@ -161,18 +175,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* Cobranças via WhatsApp */
     Route::get('admin/ferramenta/cobranca',                       [FerramentaCobrancaController::class, 'index'])->name('ferramenta.cobranca');
-
-    /* Ferramentas - Mensagens para WhatsApp */
-    Route::get('admin/ferramenta/mensagem',                       [FerramentaMensagemController::class, 'index'])->name('ferramenta.mensagem');
-    Route::get('admin/ferramenta/mensagem/adicionar',             [FerramentaMensagemController::class, 'create'])->name('ferramenta.mensagem.adicionar');
-    Route::get('admin/ferramenta/mensagem/editar/{id?}',          [FerramentaMensagemController::class, 'edit'])->name('ferramenta.mensagem.editar');
-    Route::post('admin/ferramenta/mensagem/store',                [FerramentaMensagemController::class, 'store'])->name('ferramenta.mensagem.store');
-    Route::post('admin/ferramenta/mensagem/update/{id}',          [FerramentaMensagemController::class, 'update'])->name('ferramenta.mensagemda.update');
-
-    Route::get('admin/ferramenta/cobranca/automatica',            [FerramentaCobrancaController::class, 'cobranca_automatica'])->name('ferramenta.cobranca.automatica');
-
-
-
 });
 
 /* Rotas do Site */
