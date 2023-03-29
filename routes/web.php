@@ -93,15 +93,19 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* Sites */
     //configurar
+    Route::get('admin/sites/configurar',                          [FerramentaCobrancaController::class, 'index'])->name('sites.configurar');
     //conteudos
+    Route::get('admin/sites/conteudos',                          [FerramentaCobrancaController::class, 'index'])->name('sites.conteudos');
 
-    /* Ferramentas - Mensagens para WhatsApp */
+    /* Ferramentas*/
+    //Mensagens para WhatsApp
     Route::get('admin/ferramenta/mensagem',                       [FerramentaMensagemController::class, 'index'])->name('ferramenta.mensagem');
     Route::get('admin/ferramenta/mensagem/adicionar',             [FerramentaMensagemController::class, 'create'])->name('ferramenta.mensagem.adicionar');
     Route::get('admin/ferramenta/mensagem/editar/{id?}',          [FerramentaMensagemController::class, 'edit'])->name('ferramenta.mensagem.editar');
     Route::post('admin/ferramenta/mensagem/store',                [FerramentaMensagemController::class, 'store'])->name('ferramenta.mensagem.store');
     Route::post('admin/ferramenta/mensagem/update/{id}',          [FerramentaMensagemController::class, 'update'])->name('ferramenta.mensagemda.update');
-
+    // Cobranças via WhatsApp
+    Route::get('admin/ferramenta/cobranca',                       [FerramentaCobrancaController::class, 'index'])->name('ferramenta.cobranca');
     Route::get('admin/ferramenta/cobranca/automatica',            [FerramentaCobrancaController::class, 'cobranca_automatica'])->name('ferramenta.cobranca.automatica');
 
     /* Cadastros */
@@ -136,6 +140,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* Estoque */
     //Gerenciar
+    Route::get('admin/estoque/gerenciar',                          [FerramentaCobrancaController::class, 'index'])->name('sites.gerenciar');
 
     /* Vendas */
     /* Ponto de Venda */
@@ -147,11 +152,17 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* Relatório */
     // Logs de Acesso
+    Route::get('admin/relatorio/logs_de_acesso',                          [FerramentaCobrancaController::class, 'index'])->name('relatorio.logs_de_acesso');
     // Empresas
+    Route::get('admin/relatorio/empresas',                          [FerramentaCobrancaController::class, 'index'])->name('relatorio.empresas');
     // Produtos
+    Route::get('admin/relatorio/produtos',                          [FerramentaCobrancaController::class, 'index'])->name('relatorio.produtos');
     // Clientes
+    Route::get('admin/relatorio/clientes',                          [FerramentaCobrancaController::class, 'index'])->name('relatorio.clientes');
     // Estoque
+    Route::get('admin/relatorio/estoque',                          [FerramentaCobrancaController::class, 'index'])->name('relatorio.estoque');
     // Vendas
+    Route::get('admin/relatorio/vendas',                          [FerramentaCobrancaController::class, 'index'])->name('relatorio.vendas');
 
     /*
         @function pesquisar_produto_por_empresa
@@ -173,8 +184,6 @@ Route::group(['middleware' => 'auth'], function () {
     /* API de Controles */
     Route::post('admin/api/selecionar_empresa',                   [ApiController::class, 'selecionar_empresa'])->name('api.selecionar_empresa');
 
-    /* Cobranças via WhatsApp */
-    Route::get('admin/ferramenta/cobranca',                       [FerramentaCobrancaController::class, 'index'])->name('ferramenta.cobranca');
 });
 
 /* Rotas do Site */

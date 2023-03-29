@@ -15,8 +15,8 @@ class FerramentaCobrancaController extends Controller
      */
     public function index()
     {
-        //
-        echo "Inicio do método de cobrança ";
+        // echo "Inicio do método de cobrança ";
+        return view('pages.ferramentas.cobranca.index');
     }
 
 
