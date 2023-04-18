@@ -55,7 +55,7 @@ class AppImportarController extends Controller
 
 
         $Planos = DB::connection('mysql_hdtv')->select("SELECT * FROM plano");
-        
+
         foreach($Planos as $plano){
 
             $plano_array = [
@@ -69,7 +69,7 @@ class AppImportarController extends Controller
             } else {
                 echo "Erro ao cadastrar plano. ";
             }
-            
+
         }
     }
 

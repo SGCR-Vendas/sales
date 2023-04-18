@@ -15,8 +15,8 @@ class FerramentaCobrancaController extends Controller
      */
     public function index()
     {
-        //
-        echo "Inicio do método de cobrança ";
+        // echo "Inicio do método de cobrança ";
+        return view('pages.ferramentas.cobranca.index');
     }
 
 
@@ -25,6 +25,11 @@ class FerramentaCobrancaController extends Controller
         $hoje = date("Y-m-d", strtotime(NOW()));
         $vence_hoje = CadastroVenda::BuscarVencimento($hoje);
         $saudacao = Tratamento::SaudacaoHorario();
+
+
+        // dd($vence_hoje);
+
+
 
         if ($vence_hoje) {
 
@@ -86,13 +91,13 @@ class FerramentaCobrancaController extends Controller
                 $i++;
 
 
-                //if ($i == 0) break;
+                if ($i == 0) break;
             }
         }
 
-        echo "<pre>";
-        print_r($retorno);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($retorno);
+        // echo "</pre>";
 
 
 
