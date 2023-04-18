@@ -105,8 +105,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('admin/ferramenta/mensagem/store',                [FerramentaMensagemController::class, 'store'])->name('ferramenta.mensagem.store');
     Route::post('admin/ferramenta/mensagem/update/{id}',          [FerramentaMensagemController::class, 'update'])->name('ferramenta.mensagemda.update');
     // Cobranças via WhatsApp
-    Route::get('admin/ferramenta/cobranca',                       [FerramentaCobrancaController::class, 'index'])->name('ferramenta.cobranca');
-    Route::get('admin/ferramenta/cobranca/automatica',            [FerramentaCobrancaController::class, 'cobranca_automatica'])->name('ferramenta.cobranca.automatica');
+    Route::get('admin/ferramenta/cobranca',
+        [FerramentaCobrancaController::class, 'index']
+    )->name('ferramenta.cobranca');
 
     /* Cadastros */
     /* Cadastros - Empresa */
@@ -188,3 +189,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 /* Rotas do Site */
 Route::get('como-funciona',                                       [SiteController::class, 'comofunciona'])->name('site.comofunciona');
+
+
+Route::get('admin/ferramenta/cobranca/automatica',            [FerramentaCobrancaController::class, 'cobranca_automatica'])->name('ferramenta.cobranca.automatica');
