@@ -32,16 +32,16 @@ class ApiController extends Controller
     // Enviar MSG para whatsApp
     public static function enviar_mensagem($phone_number, $message_body)
     {
-      //  return true;
+        //  return true;
 
-        $api_key = "9588dd63-98c1-4db4-802b-30abe453efa3";
-        $phone_number_sender = "554896533629";
+        $api_key = "d929f392-3d7b-4f06-b944-ba26007bd9b8";
+        $phone_number_sender = "5548996533629";
         $contact_phone_number = $phone_number;
         $message_custom_id = "mysoftwareid";
         $message_type = "text";
         $message_body = ($message_body) ?? 'Seja bem vindo (a) <b>Blue TV!</b> \n Efetue sua compra conosco! \n Conheça nosso site: www.hdtv.blue';
 
-        $curl = curl_init();
+        $curl = curl_init();       
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://app.whatsgw.com.br/api/WhatsGw/Send",
@@ -70,7 +70,7 @@ class ApiController extends Controller
 
         $curl = curl_init();
 
-        $api_key = "9588dd63-98c1-4db4-802b-30abe453efa3";
+        $api_key = "d929f392-3d7b-4f06-b944-ba26007bd9b8";
         $phone_number_sender = "554896533629";
         $contact_phone_number = $phone_number;
         $message_custom_id = "mysoftwareid";

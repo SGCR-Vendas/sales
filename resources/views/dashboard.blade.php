@@ -488,7 +488,7 @@
 
 				console.log(tabela, modulo, redirecionar, id)
 
-			})
+			})  
 
 			/* Vínculo de Empresa ao Produto */
 			$("#id_empresa").on('change', function() {

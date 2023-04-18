@@ -21,14 +21,14 @@ class AppImportarController extends Controller
 
 
     public function importar_clientes(){
-        // echo "Todos os clientes já foram importados com sucesso. \n Função desativada!";
-        // return false;
+        echo "Todos os clientes já foram importados com sucesso. \n Função desativada!";
+        return false;
 
-        $Clientes = DB::connection('mysql_hdtv')->select("SELECT * FROM cliente WHERE nome LIKE '%+'");      
+        $Clientes = DB::connection('mysql_hdtv')->select("SELECT * FROM cliente WHERE nome NOT LIKE '%+'");      
         foreach($Clientes as $cliente){
             $cliente_app_array = [
                 'id' => $cliente->id_cliente,
-                'id_empresa' => 2,
+                'id_empresa' => 1,
                 'nome' => $this->importar_cliente_nome($cliente->nome),
                 'celular' => $cliente->telefone,
                 'status' => 'Ativo',
@@ -40,10 +40,12 @@ class AppImportarController extends Controller
             } else {
                 echo "Erro ao cadastrar cliente. ";
             }
-        
+
         }
 
-        echo "<hr> <h1>Foram importados ".count($Clientes)." Clientes</h1>";
+        dd($cliente_app_array);
+
+       // echo "<hr> <h1>Foram importados ".count($Clientes)." Clientes</h1>";
     }
 
     public function importar_planos(){
@@ -73,8 +75,8 @@ class AppImportarController extends Controller
 
     public function importar_vendas(){
 
-        echo "Todos as vendas já foram importados com sucesso. \n Função desativada!";
-        return false;
+        // echo "Todos as vendas já foram importados com sucesso. \n Função desativada!";
+        // return false;
 
 
 

@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/hdtvblue/sales.hdtv.blue #Add /<sub_folder> if required
+    - export DEPLOYPATH=/home/appbluetv/sales.appbluetv.online #Add /<sub_folder> if required
     - /bin/cp -r * $DEPLOYPATH

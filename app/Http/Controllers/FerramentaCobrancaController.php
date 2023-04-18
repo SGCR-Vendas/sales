@@ -34,10 +34,10 @@ class FerramentaCobrancaController extends Controller
                 if (!$vencimento->celular == "") {
 
                     /* Variáveis Gerais */
-                    $cliente_celular = "554198036863";
+                   // $cliente_celular = "554198036863";
 
                     $data = explode(" ", $vencimento->data_venda);
-                    //$cliente_celular = Tratamento::FormatarTelefone($vencimento->celular);
+                    $cliente_celular = Tratamento::FormatarTelefone($vencimento->celular);
               
                     /* Parte A - Cobrança */
                     $cobranca = new FerramentaMensagem();
@@ -51,7 +51,7 @@ class FerramentaCobrancaController extends Controller
                         $cobranca->whatsapp = $cliente_celular;
                         $cobranca->status = 'Enviado';
                         $cobranca->save();
-                    }
+                    }                 
 
                     /* Parte B - Imagem */
                     $cobranca_imagem = new FerramentaMensagem();
