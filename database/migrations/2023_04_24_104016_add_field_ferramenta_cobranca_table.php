@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('produtos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        //
+        Schema::table('ferramentas_mensagem', function ($table) {
+            $table->integer('id_produto')->after('id_cliente')->nulllalbe();
+            $table->dateTime('data_vencimento', $precision = 0)->after('status')->nullable();
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produtos');
+        //
     }
 };

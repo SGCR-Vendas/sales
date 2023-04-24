@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     use HasFactory;
+
+
+    public function vendas()
+    {
+        //return $this->hasMany(CadastroVenda::class, 'id_cliente', 'id');
+    }
 }

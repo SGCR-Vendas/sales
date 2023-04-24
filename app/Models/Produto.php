@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Produto extends Model
 {
     use HasFactory;
+
+    public function vendasp()
+    {
+        // return $this->hasMany(CadastroVenda::class, 'id_produto', 'id');
+    }
 }

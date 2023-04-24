@@ -71,16 +71,20 @@ class CadastroVenda extends Model
             'c.id as id_cliente',
             'p.titulo as titulo_produto',
             'pc.valor_compra',
-            'pc.valor_venda'
+            'pc.valor_venda',
+            'e.nome',
+            'e.cpf'
         )
             ->join("clientes AS c", "c.id", "=", "vendas.id_cliente")
             ->join("produtos AS p", "p.id", "=", "vendas.id_produto")
             ->join("produtos_configuracoes AS pc", "pc.id", "=", "vendas.id_produto")
-            ->where('c.id_empresa', 1)
+            ->join("empresas AS e", "e.id", "=", "c.id_empresa")
             ->where('vendas.data_vencimento', 'LIKE', '%' . $data . '%')
             ->where('c.id_empresa', 1)
             ->get();
 
         return $listaVencimento;
     }
+
+
 }
