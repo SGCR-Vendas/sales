@@ -25,7 +25,8 @@ class FerramentaCobrancaController extends Controller
 
     public function cobranca_automatica()
     {
-        $hoje = date("Y-m-d", strtotime(NOW()));
+        $hoje = date('Y-m-d', strtotime("+2 days")); //48h
+        //$hoje = "2023-04-25";
         $vence_hoje = CadastroVenda::BuscarVencimento($hoje);
         $saudacao = Tratamento::SaudacaoHorario();
         $retorno = [];

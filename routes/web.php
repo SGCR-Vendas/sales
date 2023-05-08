@@ -34,6 +34,8 @@ use App\Http\Controllers\VendaPdvController;
 use App\Http\Controllers\FerramentaCobrancaController;
 use App\Http\Controllers\FerramentaMensagemController;
 
+use App\Http\Controllers\MercadoPagoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -192,3 +194,9 @@ Route::get('como-funciona',                                       [SiteControlle
 
 
 Route::get('admin/ferramenta/cobranca/automatica',            [FerramentaCobrancaController::class, 'cobranca_automatica'])->name('ferramenta.cobranca.automatica');
+
+
+
+
+
+Route::get('/mercadopago/plano', [MercadoPagoController::class, 'show'])->name('mercadopago.show');
